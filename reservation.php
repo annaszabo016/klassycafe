@@ -1,3 +1,7 @@
+
+<?php
+include("partials/header.php");
+?>
 <!-- ***** Reservation Us Area Starts ***** -->
 <section class="section" id="reservation">
         <div class="container">
@@ -106,3 +110,9 @@
         </div>
     </section>
     <!-- ***** Reservation Area Ends ***** -->
+     
+<?php
+include("partials/footer.php");
+?>
+   
+

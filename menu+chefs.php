@@ -1,3 +1,7 @@
+
+<?php
+include("partials/header.php");
+?>
 <!-- ***** Menu Area Starts ***** -->
 <section class="section" id="menu">
         <div class="container">
@@ -158,3 +162,9 @@
         </div>
     </section>
     <!-- ***** Chefs Area Ends ***** -->
+     
+<?php
+include("partials/footer.php");
+?>
+   
+
