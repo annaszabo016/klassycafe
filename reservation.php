@@ -33,7 +33,7 @@ include("partials/header.php");
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-form">
-                        <form id="contact" action="" method="post">
+                        <form id="contact" action="thankyou.php" method="post">
                           <div class="row">
                             <div class="col-lg-12">
                                 <h4>Table Reservation</h4>

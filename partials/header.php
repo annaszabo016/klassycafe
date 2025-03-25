@@ -1,6 +1,8 @@
-
+<?php
+include("inc/functions.php");
+?>
     
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -58,25 +60,13 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li ><a href="index.php" class="active">Home</a></li>
-                    
-                           	
-                        <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
-                            <li ><a href="menu+chefs.php">Menu, Our chefs</a></li>
-                        
-                            
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li ><a href="reservation.php">Contact Us</a></li> 
-                               
+                        <?php
+                            $pages = array('Domov'=>'index.php',
+                            'Menu'=>'menu+chefs.php',
+                            'reservation'=>'reservation.php'  
+                                              );
+                         echo(get_menu($pages));
+                        ?>    
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
