@@ -1,5 +1,6 @@
 <?php
-include("inc/functions.php");
+require_once("inc/classes/Database.php");
+require_once("inc/classes/Contact.php");
 ?>
     
 <!DOCTYPE html>
@@ -64,8 +65,15 @@ https://templatemo.com/tm-558-klassy-cafe
                             $pages = array('Domov'=>'index.php',
                             'Menu'=>'menu+chefs.php',
                             'reservation'=>'reservation.php'  
-                                              );
-                         echo(get_menu($pages));
+                            );
+                            $menuItems = ''; 
+                            
+                            foreach($pages as $page_name => $page_url){
+                                // Pre každú stránku pridá odkaz do navigačného menu
+                                $menuItems .= '<li><a href="' . $page_url . '">' . $page_name . '</a></li>';
+                                //<li><a href="index.html">Domov</a><li>
+                            }
+                            echo($menuItems);
                         ?>    
                         <a class='menu-trigger'>
                             <span>Menu</span>

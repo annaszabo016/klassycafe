@@ -89,6 +89,7 @@ include("partials/header.php");
 
 
 <?php
+include("partials/menu.php");
 include("partials/footer.php");
 ?>
    

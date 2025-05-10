@@ -164,6 +164,7 @@ include("partials/header.php");
     <!-- ***** Chefs Area Ends ***** -->
      
 <?php
+include("partials/menu.php");
 include("partials/footer.php");
 ?>
    
