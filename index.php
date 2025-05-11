@@ -21,27 +21,32 @@ include("partials/header.php");
                 <div class="col-lg-8">
                     <div class="main-banner header-text">
                         <div class="Modern-Slider">
-                          <!-- Item -->
-                          <div class="item">
-                            <div class="img-fill">
-                                <img src="assets/images/slide-01.jpg" alt="">
+                            <!--
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="assets/images/slide-01.jpg" alt="">
+                                </div>
                             </div>
-                          </div>
-                          <!-- // Item -->
-                          <!-- Item -->
-                          <div class="item">
-                            <div class="img-fill">
-                                <img src="assets/images/slide-02.jpg" alt="">
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="assets/images/slide-02.jpg" alt="">
+                                </div>
                             </div>
-                          </div>
-                          <!-- // Item -->
-                          <!-- Item -->
-                          <div class="item">
-                            <div class="img-fill">
-                                <img src="assets/images/slide-03.jpg" alt="">
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="assets/images/slide-03.jpg" alt="">
+                                </div>
                             </div>
-                          </div>
-                          <!-- // Item -->
+                            -->
+                            <?php
+                            for($i=1;$i<4;$i++){
+                                echo "<div class=\"item\">";
+                                    echo "<div class=\"img-fill\">";
+                                        echo "<img src=\"assets/images/slide-0{$i}.jpg\" alt=\"\">";
+                                    echo "</div>";
+                                echo "</div>";
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -62,6 +67,7 @@ include("partials/header.php");
                         </div>
                         <p>Klassy Cafe is one of the best <a href="https://templatemo.com/tag/restaurant" target="_blank" rel="sponsored">restaurant HTML templates</a> with Bootstrap v4.5.2 CSS framework. You can download and feel free to use this website template layout for your restaurant business. You are allowed to use this template for commercial purposes. <br><br>You are NOT allowed to redistribute the template ZIP file on any template donwnload website. Please contact us for more information.</p>
                         <div class="row">
+                            <!--
                             <div class="col-4">
                                 <img src="assets/images/about-thumb-01.jpg" alt="">
                             </div>
@@ -71,6 +77,14 @@ include("partials/header.php");
                             <div class="col-4">
                                 <img src="assets/images/about-thumb-03.jpg" alt="">
                             </div>
+                            -->
+                            <?php
+                            for($i=1;$i<4;$i++){
+                                echo "<div class=\"col-4\">";
+                                    echo "<img src=\"assets/images/about-thumb-0{$i}.jpg\" alt=\"\">";
+                                echo "</div>";
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

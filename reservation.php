@@ -1,27 +1,7 @@
 <?php
 include("partials/header.php");
-
-  /*$db = new Database();
-  $contact = new Contact($db);
-
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $meno = trim($_POST["name"] ?? "");
-    $email = trim($_POST["email"] ?? "");
-    $tel = trim($_POST["phone"] ?? "");
-    $pocethosti = trim($_POST["number-guests"] ?? "");
-    $datum = trim($_POST["date"] ?? "");
-    $cas = trim($_POST["time"] ?? "");
-    $popis = trim($_POST["message"] ?? "");
-
-    if ($contact->create($meno, $email, $tel, $pocethosti, $datum, $cas, $popis)) {
-      header("Location: thankyou.php");
-      exit;
-    }
-    else {
-      echo "Nepodarilo sa odoslať formulár!";
-    }
-  }*/
 ?>
+
 <!-- ***** Reservation Us Area Starts ***** -->
 <section class="section" id="reservation">
         <div class="container">

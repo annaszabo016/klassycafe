@@ -1,6 +1,15 @@
 
 <?php
+
 include("partials/header.php");
+require_once("inc/classes/Menu.php");
+require_once("inc/classes/Chefs.php");
+
+$db = new Database();
+$menu = new Menu($db);
+$menu_list = $menu->index();
+$chefs = new Chefs($db);
+$chefs_list = $chefs->index();
 ?>
 <!-- ***** Menu Area Starts ***** -->
 <section class="section" id="menu">
@@ -17,78 +26,24 @@ include("partials/header.php");
         <div class="menu-item-carousel">
             <div class="col-lg-12">
                 <div class="owl-menu-item owl-carousel">
-                    <div class="item">
-                        <div class='card card1'>
-                            <div class="price"><h6>$14</h6></div>
-                            <div class='info'>
-                              <h1 class='title'>Chocolate Cake</h1>
-                              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do eiusmod teme.</p>
-                              <div class="main-text-button">
-                                  <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class='card card2'>
-                            <div class="price"><h6>$22</h6></div>
-                            <div class='info'>
-                              <h1 class='title'>Klassy Pancake</h1>
-                              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do eiusmod teme.</p>
-                              <div class="main-text-button">
-                                  <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class='card card3'>
-                            <div class="price"><h6>$18</h6></div>
-                            <div class='info'>
-                              <h1 class='title'>Tall Klassy Bread</h1>
-                              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do eiusmod teme.</p>
-                              <div class="main-text-button">
-                                  <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class='card card4'>
-                            <div class="price"><h6>$10</h6></div>
-                            <div class='info'>
-                              <h1 class='title'>Blueberry CheeseCake</h1>
-                              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do eiusmod teme.</p>
-                              <div class="main-text-button">
-                                  <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class='card card5'>
-                            <div class="price"><h6>$8.50</h6></div>
-                            <div class='info'>
-                              <h1 class='title'>Klassy Cup Cake</h1>
-                              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do eiusmod teme.</p>
-                              <div class="main-text-button">
-                                  <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class='card card3'>
-                            <div class="price"><h6>$7.25</h6></div>
-                            <div class='info'>
-                              <h1 class='title'>Klassic Cake</h1>
-                              <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do eiusmod teme.</p>
-                              <div class="main-text-button">
-                                  <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        $counter = 0;
+                        foreach ($menu_list as $item) {
+                            $counter++;
+                            echo "<div class=\"item\">";
+                                echo "<div class=\"card card{$counter}\">";
+                                    echo "<div class=\"price\"><h6>".$item["cena"]."€</h6></div>";
+                                    echo "<div class=\"info\">";
+                                        echo "<h1 class=\"title\">".$item["nazov_produktu"]."</h1>";
+                                        echo "<p class=\"description\">".$item["popis"]."</p>";
+                                        echo "<div class=\"main-text-button\">";
+                                            echo "<div class=\"scroll-to-section\"><a href=\"#reservation\">Make Reservation <i class=\"fa fa-angle-down\"></i></a></div>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -107,57 +62,29 @@ include("partials/header.php");
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="chef-item">
-                        <div class="thumb">
-                            <div class="overlay"></div>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                            <img src="assets/images/chefs-01.jpg" alt="Chef #1">
-                        </div>
-                        <div class="down-content">
-                            <h4>Randy Walker</h4>
-                            <span>Pastry Chef</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="chef-item">
-                        <div class="thumb">
-                            <div class="overlay"></div>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                            <img src="assets/images/chefs-02.jpg" alt="Chef #2">
-                        </div>
-                        <div class="down-content">
-                            <h4>David Martin</h4>
-                            <span>Cookie Chef</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="chef-item">
-                        <div class="thumb">
-                            <div class="overlay"></div>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google"></i></a></li>
-                            </ul>
-                            <img src="assets/images/chefs-03.jpg" alt="Chef #3">
-                        </div>
-                        <div class="down-content">
-                            <h4>Peter Perkson</h4>
-                            <span>Pancake Chef</span>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    $counter = 0;
+                    foreach($chefs_list as $chef) {
+                        $counter++;
+                        echo "<div class=\"col-lg-4\">";
+                            echo "<div class=\"chef-item\">";
+                                echo "<div class=\"thumb\">";
+                                    echo "<div class=\"overlay\"></div>";
+                                    echo "<ul class=\"social-icons\">";
+                                        echo "<li><a href=\"".(($chef["facebook"] != null) ? $chef["facebook"] : "#")."\"><i class=\"fa fa-facebook\"></i></a></li>";
+                                        echo "<li><a href=\"".(($chef["twitter"] != null) ? $chef["twitter"] : "#")."\"><i class=\"fa fa-twitter\"></i></a></li>";
+                                        echo "<li><a href=\"".(($chef["instagram"] != null) ? $chef["instagram"] : "#")."\"><i class=\"fa fa-instagram\"></i></a></li>";
+                                    echo "</ul>";
+                                    echo "<img src=\"assets/images/chefs-0{$counter}.jpg\" alt=\"Chef #{$counter}\">";
+                                echo "</div>";
+                                echo "<div class=\"down-content\">";
+                                    echo "<h4>" . $chef["meno"] . " " . $chef["priezvisko"] . "</h4>";
+                                    echo "<span>".$chef["odbor"]."</span>";
+                                echo "</div>";
+                            echo "</div>";
+                        echo "</div>";
+                    }
+                ?>
             </div>
         </div>
     </section>
