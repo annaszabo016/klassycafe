@@ -2,6 +2,8 @@
 include('partials/header.php');
 
 $db = new Database();
+$auth = new Authenticate($db);
+$auth->requireLogin();
 $contact = new Contact($db);
 $contacts = $contact->index();
 

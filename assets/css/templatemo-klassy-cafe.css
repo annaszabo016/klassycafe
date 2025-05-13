@@ -1488,11 +1488,11 @@ contacts-table
 
 /*
 ---------------------------------------------
-contact-edit
+contact-edit + login
 ---------------------------------------------
 */
 
-#edit {
+#edit, #login-section {
   margin-top: 120px;
   padding: 120px 0px;
   background-image: url(../images/reservation-bg.jpg);
@@ -1501,19 +1501,23 @@ contact-edit
   background-size: cover;
 }
 
-#contact-edit {
+#contact-edit, #login-form {
   margin-left: 30px;
   padding: 45px 30px;
   background-color: #fff;
   border-radius: 5px;
 }
 
-#contact-edit h4 {
+#contact-edit h4, #login-form h4 {
   text-align: center;
   font-weight: 700;
   font-size: 30px;
   color: #2a2a2a;
   margin-bottom: 30px;
+}
+
+#submit-login {
+  margin-top: 10px;
 }
 
 

@@ -1,6 +1,9 @@
 <?php
-require_once("inc/classes/Database.php");
-require_once("inc/classes/Contact.php");
+require_once("inc/autoload.php");
+
+session_start();
+$db = new Database();
+$auth = new Authenticate($db);
 ?>
     
 <!DOCTYPE html>
@@ -61,20 +64,28 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                        <?php
-                            $pages = array('Domov'=>'index.php',
-                            'Menu'=>'menu+chefs.php',
-                            'reservation'=>'reservation.php'  
-                            );
-                            $menuItems = ''; 
-                            
-                            foreach($pages as $page_name => $page_url){
-                                // Pre každú stránku pridá odkaz do navigačného menu
-                                $menuItems .= '<li><a href="' . $page_url . '">' . $page_name . '</a></li>';
-                                //<li><a href="index.html">Domov</a><li>
-                            }
-                            echo($menuItems);
-                        ?>    
+                            <?php
+                                $pages = array('Domov'=>'index.php',
+                                'Menu'=>'menu+chefs.php',
+                                'reservation'=>'reservation.php'  
+                                );
+                                $menuItems = ''; 
+                                
+                                foreach($pages as $page_name => $page_url){
+                                    // Pre každú stránku pridá odkaz do navigačného menu
+                                    $menuItems .= '<li><a href="' . $page_url . '">' . $page_name . '</a></li>';
+                                    //<li><a href="index.html">Domov</a><li>
+                                }
+                                echo($menuItems);
+
+                                if ($auth->isLoggedIn()) {
+                                    echo "<li><a href=\"logout.php\">Odhlásiť sa</a></li>";
+                                }
+                                else if (!$auth->isLoggedIn()) {
+                                    echo "<li><a href=\"login.php\">Prilásiť sa</a></li>";
+                                }
+                            ?>
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
