@@ -67,7 +67,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <?php
                                 $pages = array('Domov'=>'index.php',
                                 'Menu'=>'menu+chefs.php',
-                                'reservation'=>'reservation.php'  
+                                'Rezervacie'=>'reservation.php'  
                                 );
                                 $menuItems = ''; 
                                 

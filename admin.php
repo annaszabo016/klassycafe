@@ -43,8 +43,8 @@ if (isset($_GET['status']) && isset($_GET['id'])) {
                                     <th>Datum</th>
                                     <th>Cas</th>
                                     <th>Popis</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Editovat</th>
+                                    <th>Odstranit</th>
                                     <th>Stav</th>
                                     <th>Akcie</th>
                                 </tr>
