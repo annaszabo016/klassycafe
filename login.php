@@ -4,15 +4,22 @@ include("partials/header.php");
   $db = new Database();
   $auth = new Authenticate($db);
 
+
+  // Ellenőrizzük, hogy a GET kérés tartalmaz-e 'id' paramétert
   if (isset($_GET["id"])) {
+    //lekerjuk az id-t
     $id = $_GET["id"];
     $contactData = $contact->show($id);
   }
 
+
+  // Ha az oldal POST kérésen keresztül lett elküldve (pl. bejelentkezési űrlap)
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Az e-mailt és jelszót lekérjük a POST adatokból, ha nem szerepelnek, akkor üres stringet használunk
     $email = $_POST["email-login"] ?? "";
     $password = $_POST["password-login"] ?? "";
 
+    // Megpróbáljuk bejelentkeztetni a felhasználót a megadott e-maillel és jelszóval
     if ($auth->login($email, $password)) {
         header("Location: admin.php"); 
         exit;

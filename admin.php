@@ -3,8 +3,10 @@ include('partials/header.php');
 
 $db = new Database();
 $auth = new Authenticate($db);
+// Ellenőrzi, hogy a felhasználó be van-e jelentkezve, ha nem, átirányíthatja
 $auth->requireLogin();
 $contact = new Contact($db);
+// Lekérdezi az összes foglalási adatot az adatbázisból
 $contacts = $contact->index();
 
 if (isset($_GET["delete"])) {
@@ -12,6 +14,8 @@ if (isset($_GET["delete"])) {
     header("Location: admin.php");
     exit;
 }
+
+// Ha az URL-ben van "status" és "id", frissítjük a foglalás státuszát
 if (isset($_GET['status']) && isset($_GET['id'])) {
     $allowed = ['accepted', 'denied', 'pending'];
     $status = $_GET['status'];
@@ -60,17 +64,17 @@ if (isset($_GET['status']) && isset($_GET['id'])) {
                                     echo "<td>".$con["cas"]."</td>";
                                     echo "<td>".$con["popis"]."</td>";
 
-                                    // Edit
+                                    // Szerkesztés link (megnyitja új ablakban a contact-edit.php-t az adott ID-val)
                                     echo "<td><a href='contact-edit.php?id={$con["idreservation"]}' target='_blank'>Editovať</a></td>";
 
-                                    // Delete
+                                    // Törlés link, megerősítő párbeszéddel
                                     echo "<td><a href='?delete={$con["idreservation"]}' onclick=\"return confirm('Určite chcete vymazať túto správu?')\">Odstrániť</a></td>";
 
-                                    // Stav (Status)
+                                    // Státusz kijelzése, CSS osztállyal formázva
                                     $status = $con["status"];
                                     echo "<td><span class='status $status'>" . ucfirst($status) . "</span></td>";
 
-                                    // Akcie (Actions)
+                                    // Akciók: státusz módosítása elfogadottra vagy elutasítottra
                                     echo "<td>
                                         <a href='?status=accepted&id={$con["idreservation"]}' onclick=\"return confirm('Akceptovať rezerváciu?')\">Akceptovať</a> 
                                         <a href='?status=denied&id={$con["idreservation"]}' onclick=\"return confirm('Zamietnuť rezerváciu?')\">Zamietnuť</a>

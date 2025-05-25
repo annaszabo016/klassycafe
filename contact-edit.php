@@ -4,11 +4,15 @@ include("partials/header.php");
   $db = new Database();
   $contact = new Contact($db);
 
+
+  // Ellenőrizzük, hogy a GET kérés tartalmaz-e egy 'id' paramétert 
   if (isset($_GET["id"])) {
     $id = $_GET["id"];
+    // Lekérdezzük az adott ID-hoz tartozó adatokat (pl. foglalás részletei)
     $contactData = $contact->show($id);
   }
 
+  // Ellenőrizzük, hogy POST kérés érkezett-e
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $meno = trim($_POST["name-edit"] ?? "");
     $email = trim($_POST["email-edit"] ?? "");
@@ -18,6 +22,8 @@ include("partials/header.php");
     $cas = trim($_POST["time-edit"] ?? "");
     $popis = trim($_POST["message-edit"] ?? "");
 
+
+    // Meghívjuk az 'edit' metódust a Contact osztályban, hogy frissítsük az adatbázisban a megadott ID-hoz tartozó rekordot
     if ($contact->edit($id, $meno, $email, $tel, $pocethosti, $datum, $cas, $popis)) {
         header("Location: admin.php");
         exit;
