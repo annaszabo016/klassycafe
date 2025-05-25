@@ -1258,6 +1258,16 @@ reservation
   color: #fb5849;
 }
 
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+}
+.status.pending { background-color: orange; }
+.status.accepted { background-color: green; }
+.status.denied { background-color: red; }
+
 #contact {
   margin-left: 30px;
   padding: 45px 30px;

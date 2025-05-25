@@ -52,5 +52,12 @@ class Contact {
         $stmt->bindParam(":popis", $popis, PDO::PARAM_STR);
         return $stmt->execute();
     }
+    
+    public function updateStatus($id, $status) {
+    $stmt = $this->db->prepare("UPDATE reservation SET status = :status WHERE idreservation = :id");
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    $stmt->bindParam(":status", $status, PDO::PARAM_STR);
+    return $stmt->execute();
+}
 }
 ?>
